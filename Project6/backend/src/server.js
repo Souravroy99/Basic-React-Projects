@@ -2,12 +2,15 @@ import dotenv from 'dotenv'
 dotenv.config()
 import express from 'express'
 import { connectDB } from './config/db.js'
-
+import notesRouter from './routes/notesRoutes.js'
+import rateLimiter from './middleware/rateLimiter.js'
 
 const app = express()
+app.use(rateLimiter)
+
 app.use(express.json())
 
-import notesRouter from './routes/notesRoutes.js'
+
 app.use("/api/notes", notesRouter)
 
 
