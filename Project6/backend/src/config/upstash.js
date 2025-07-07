@@ -6,7 +6,7 @@ import { Redis } from "@upstash/redis"
 
 const ratelimit = new Ratelimit({
     redis: Redis.fromEnv(),
-    limiter: Ratelimit.slidingWindow(3, "10 s"), // 10 requests per 10 seconds
+    limiter: Ratelimit.slidingWindow(5, "10 s"), // 10 requests per 10 seconds
 })
 
 export default ratelimit
